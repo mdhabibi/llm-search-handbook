@@ -1,0 +1,21 @@
+{
+  "description": "A small, self-contained corpus used across the course so every notebook runs out of the box. Each document is a short passage with an id, a title, and text. Topics are deliberately varied (health, animals, geography, weather, sports/TV, technology, food) and include a few near-synonym pairs so we can demonstrate where keyword search succeeds and where it fails.",
+  "documents": [
+    {"id": 0, "title": "The color of grass", "text": "Grass looks green because chlorophyll in its leaves absorbs red and blue light and reflects green light back to our eyes."},
+    {"id": 1, "title": "Why the sky is blue", "text": "The daytime sky appears blue because air molecules scatter short-wavelength blue light from the sun more than other colors."},
+    {"id": 2, "title": "Migraine symptoms", "text": "A migraine often produces a sharp, throbbing sensation localized to one temple, sometimes accompanied by nausea and sensitivity to light."},
+    {"id": 3, "title": "Treating a headache", "text": "Rest, hydration, and over-the-counter pain relievers can ease most tension headaches within a few hours."},
+    {"id": 4, "title": "Blue whales", "text": "The blue whale is the largest animal known to have ever lived, and despite its size it feeds almost entirely on tiny krill."},
+    {"id": 5, "title": "Whales are mammals", "text": "Although they live in the ocean, whales are mammals: they breathe air, are warm-blooded, and nurse their young with milk."},
+    {"id": 6, "title": "Capital of Canada", "text": "Ottawa is the capital city of Canada and sits on the south bank of the Ottawa River in the province of Ontario."},
+    {"id": 7, "title": "Capital of Australia", "text": "Canberra, not Sydney, is the capital of Australia; it was purpose-built as a compromise between the rival cities."},
+    {"id": 8, "title": "The Super Bowl", "text": "The Super Bowl is the championship game of American football and is among the most watched television broadcasts in the United States each year."},
+    {"id": 9, "title": "The FIFA World Cup final", "text": "The final of the FIFA World Cup is the single most viewed sporting event on the planet, drawing a global television audience of over a billion people."},
+    {"id": 10, "title": "How search engines work", "text": "A search engine builds an index of documents ahead of time so that when you type a query it can return relevant results in milliseconds. Popular open-source implementations include Lucene and the Elasticsearch server built on top of it."},
+    {"id": 11, "title": "What is an embedding", "text": "An embedding is a list of numbers that represents the meaning of a piece of text, placing similar meanings close together in a vector space."},
+    {"id": 12, "title": "Making espresso", "text": "Espresso is brewed by forcing hot water under pressure through finely ground coffee, producing a small, intense shot with a layer of crema."},
+    {"id": 13, "title": "Green tea", "text": "Green tea is made from unoxidized leaves and contains antioxidants; many people drink it for its mild caffeine and earthy flavor."},
+    {"id": 14, "title": "Photosynthesis basics", "text": "Plants convert sunlight, water, and carbon dioxide into sugars through photosynthesis, releasing oxygen as a byproduct."},
+    {"id": 15, "title": "Rain and weather", "text": "Rain forms when water vapor in clouds condenses into droplets heavy enough to fall, a key part of the planet's water cycle."}
+  ]
+}

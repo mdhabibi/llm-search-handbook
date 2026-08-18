@@ -1,0 +1,28 @@
+# Core
+numpy
+pandas
+scikit-learn
+matplotlib
+
+# Notebooks
+jupyterlab
+ipywidgets
+
+# Lexical search (Ch 2, 8)
+rank-bm25
+nltk
+
+# Embeddings & semantic search (Ch 4, 5, 7)
+sentence-transformers
+torch
+
+# Vector databases & ANN (Ch 6)
+faiss-cpu
+chromadb
+
+# RAG / generation (Ch 10, 11) — open-source, optional API swap
+transformers
+tiktoken
+
+# Evaluation (Ch 9)
+# (metrics implemented from scratch; uses numpy/pandas above)

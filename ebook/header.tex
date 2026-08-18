@@ -1,0 +1,58 @@
+\usepackage{graphicx}
+\usepackage{draftwatermark}
+\usepackage{fontspec}
+\setmonofont{DejaVu Sans Mono}[Scale=0.80]
+\usepackage{xcolor}
+\definecolor{accent}{HTML}{2563EB}
+\definecolor{accentdark}{HTML}{1E3A8A}
+\definecolor{calloutbg}{HTML}{EEF3FF}
+\definecolor{shadecolor}{HTML}{F4F5FA}
+
+% colored headings
+\usepackage{sectsty}
+\chapterfont{\color{accentdark}\fontsize{25}{29}\selectfont}
+\sectionfont{\color{accent}\Large}
+\subsectionfont{\color{accentdark}\large}
+\subsubsectionfont{\color{accent}\normalsize}
+
+% shaded code background (pandoc defines Shaded)
+\usepackage{framed}
+\renewenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+% shrink code so wide ASCII diagrams fit the text width
+\usepackage{etoolbox}
+\AtBeginEnvironment{Highlighting}{\footnotesize}
+\AtBeginEnvironment{verbatim}{\footnotesize}
+
+% callout boxes from markdown blockquotes
+\usepackage{mdframed}
+\newmdenv[topline=false,rightline=false,bottomline=false,leftline=true,
+  linewidth=3pt,linecolor=accent,backgroundcolor=calloutbg,
+  innerleftmargin=10pt,innerrightmargin=10pt,innertopmargin=8pt,innerbottommargin=8pt,
+  skipabove=8pt,skipbelow=8pt]{callout}
+\renewenvironment{quote}{\begin{callout}}{\end{callout}}
+
+% links
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=accent,urlcolor=accent,citecolor=accent,
+  pdfauthor={Dr. Mahdi Habibi},pdftitle={Search Semantically — LLMs and Semantic Search},
+  pdfsubject={Large Language Models and Semantic Search},
+  pdfkeywords={semantic search, embeddings, dense retrieval, RAG, information retrieval}}
+
+% running header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\color{accentdark}Search Semantically}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% --- attribution baked into every page ---
+\SetWatermarkText{Dr.\ Mahdi Habibi}
+\SetWatermarkScale{0.55}
+\SetWatermarkColor[gray]{0.90}
+\SetWatermarkAngle{45}
+\fancyfoot[C]{\small\color{gray}\textcopyright\ 2026 Dr. Mahdi Habibi \textbullet\ Search Semantically \textbullet\ v1.0.0}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\small\color{gray}\textcopyright\ 2026 Dr. Mahdi Habibi \textbullet\ Search Semantically \textbullet\ v1.0.0}%
+  \renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0.4pt}}
