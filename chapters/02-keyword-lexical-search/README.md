@@ -183,6 +183,21 @@ In order, you will:
 
 ---
 
+## Slides
+
+Presentation decks for this chapter live in [`../../slides/`](../../slides/):
+
+- **Branded deck** — [`Chapter-02-Keyword-Search.pptx`](../../slides/Chapter-02-Keyword-Search.pptx) ·
+  [PDF](../../slides/Chapter-02-Keyword-Search.pdf)
+- **Illustrated "blueprint" deck** —
+  [`Chapter-02-Keyword-Search-NotebookLM.pptx`](../../slides/Chapter-02-Keyword-Search-NotebookLM.pptx) ·
+  [PDF](../../slides/Chapter-02-Keyword-Search-NotebookLM.pdf)
+
+See [`slides/README.md`](../../slides/README.md) to make or edit decks (PowerPoint, Gamma, or
+NotebookLM).
+
+---
+
 ## Going deeper 🔴
 
 - **Why the "+0.5" terms in BM25's IDF?** BM25 uses
