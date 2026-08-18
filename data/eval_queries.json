@@ -1,0 +1,11 @@
+{
+  "description": "A tiny relevance test set over sample_corpus.json for Chapter 9. Each query lists the document ids judged relevant (binary relevance). Real evaluation sets are larger and often use graded relevance, but this is enough to learn and compare metrics.",
+  "queries": [
+    {"query": "why does grass look green", "relevant_ids": [0, 14]},
+    {"query": "a large animal that lives in the ocean", "relevant_ids": [4, 5]},
+    {"query": "strong pain on one side of the head", "relevant_ids": [2, 3]},
+    {"query": "what is the capital city of a country", "relevant_ids": [6, 7]},
+    {"query": "a hot caffeinated drink", "relevant_ids": [12, 13]},
+    {"query": "the most watched television event", "relevant_ids": [8, 9]}
+  ]
+}

@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this course, please cite it as below."
+title: "Search Semantically — Large Language Models & Semantic Search"
+abstract: >-
+  A modular, beginner-to-expert open-source course on how modern search works: from
+  classic keyword matching to embeddings, dense retrieval, re-ranking, evaluation, and
+  Retrieval-Augmented Generation (RAG), with intuitive explanations and runnable notebooks.
+type: software
+version: 1.0.0
+date-released: 2026-08-18
+license: MIT
+repository-code: "https://github.com/mdhabibi/llm-search-handbook"
+authors:
+  - family-names: Habibi
+    given-names: Mahdi
+keywords:
+  - semantic search
+  - information retrieval
+  - embeddings
+  - dense retrieval
+  - re-ranking
+  - RAG
+  - vector database
+  - large language models
+  - education

@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Data / model caches
+*.faiss
+*.index
+.chroma/
+data/cache/
+models/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# generated ebook intermediate
+ebook/book.md
+ebook/*.png
+ebook/warnings.log
+ebook/*.log
+*-protected.pdf
