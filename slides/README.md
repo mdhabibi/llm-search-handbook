@@ -9,5 +9,6 @@ Each deck is linked from its chapter's README.
 | 1 — Foundations of Information Retrieval | [Chapter-01-Foundations-of-IR.pdf](Chapter-01-Foundations-of-IR.pdf) |
 | 2 — Keyword / Lexical Search | [Chapter-02-Keyword-Search.pdf](Chapter-02-Keyword-Search.pdf) |
 | 3 — From Text to Vectors | [Chapter-03-From-Text-to-Vectors.pdf](Chapter-03-From-Text-to-Vectors.pdf) |
+| 4 — Embeddings Deep Dive | [Chapter-04-Embeddings-Deep-Dive.pdf](Chapter-04-Embeddings-Deep-Dive.pdf) |
 
 *(More chapters are added here as their decks are produced.)*

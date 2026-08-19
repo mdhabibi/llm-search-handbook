@@ -144,6 +144,13 @@ You will:
 
 ---
 
+## Slides
+
+📊 **[Chapter 4 slide deck (PDF)](../../slides/Chapter-04-Embeddings-Deep-Dive.pdf)** — a visual
+summary of embeddings and vector space.
+
+---
+
 ## Going deeper 🔴
 
 - **How are these models trained?** Mostly *contrastive learning*: pull known-similar pairs
