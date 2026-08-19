@@ -185,16 +185,8 @@ In order, you will:
 
 ## Slides
 
-Presentation decks for this chapter live in [`../../slides/`](../../slides/):
-
-- **Branded deck** — [`Chapter-02-Keyword-Search.pptx`](../../slides/Chapter-02-Keyword-Search.pptx) ·
-  [PDF](../../slides/Chapter-02-Keyword-Search.pdf)
-- **Illustrated "blueprint" deck** —
-  [`Chapter-02-Keyword-Search-NotebookLM.pptx`](../../slides/Chapter-02-Keyword-Search-NotebookLM.pptx) ·
-  [PDF](../../slides/Chapter-02-Keyword-Search-NotebookLM.pdf)
-
-See [`slides/README.md`](../../slides/README.md) to make or edit decks (PowerPoint, Gamma, or
-NotebookLM).
+📊 **[Chapter 2 slide deck (PDF)](../../slides/Chapter-02-Keyword-Search.pdf)** — a visual summary
+of this chapter.
 
 ---
 
