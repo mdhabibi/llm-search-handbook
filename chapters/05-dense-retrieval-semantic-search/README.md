@@ -121,6 +121,13 @@ You will:
 
 ---
 
+## Slides
+
+📊 **[Chapter 5 slide deck (PDF)](../../slides/Chapter-05-Dense-Retrieval.pdf)** — a visual
+summary of dense retrieval and semantic search.
+
+---
+
 ## Going deeper 🔴
 
 - **Exact vs. approximate search.** Our corpus is tiny, so we compute cosine against *every*
