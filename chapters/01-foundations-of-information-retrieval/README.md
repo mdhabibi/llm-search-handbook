@@ -148,6 +148,13 @@ follows.
 
 ---
 
+## Slides
+
+📊 **[Chapter 1 slide deck (PDF)](../../slides/Chapter-01-Foundations-of-IR.pdf)** — a visual summary
+of the search foundations.
+
+---
+
 ## Going deeper 🔴
 
 - **Relevance is not binary.** In practice relevance is graded (perfect / good / marginal /

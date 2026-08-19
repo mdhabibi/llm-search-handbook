@@ -79,6 +79,13 @@ learning to build each part.
 
 ---
 
+## Slides
+
+📊 **[Chapter 0 slide deck (PDF)](../../slides/Chapter-00-Introduction.pdf)** — a visual intro:
+beyond keywords, to meaning.
+
+---
+
 ## Key terms
 
 Large Language Model (LLM), embedding, retrieval, ranking, semantic search, RAG. *(See
