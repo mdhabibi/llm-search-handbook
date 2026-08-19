@@ -150,6 +150,13 @@ Everything here is pure numpy + matplotlib — no models yet, so it runs instant
 
 ---
 
+## Slides
+
+📊 **[Chapter 3 slide deck (PDF)](../../slides/Chapter-03-From-Text-to-Vectors.pdf)** — a visual
+summary of turning text into vectors.
+
+---
+
 ## Going deeper 🔴
 
 - **The curse of dimensionality.** In very high dimensions, distances between random points
