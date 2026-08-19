@@ -81,7 +81,7 @@ Search Semantically/
 ├── GLOSSARY.md                     ← every key term, defined simply
 ├── Search-Semantically-ebook.pdf   ← the whole course as a colorful e-book
 ├── ebook/                          ← scripts to rebuild the PDF from the chapters
-├── slides/                         ← presentation decks per chapter (PPTX/PDF + Gamma/NotebookLM)
+├── slides/                         ← one presentation deck (PDF) per chapter
 ├── setup/SETUP.md                  ← environment setup (one-time)
 ├── requirements.txt                ← Python dependencies
 ├── data/                           ← sample corpus + labeled eval set
