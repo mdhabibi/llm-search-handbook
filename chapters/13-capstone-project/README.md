@@ -136,6 +136,13 @@ a clearly marked **"bring your own corpus"** cell. You will:
 
 ---
 
+## Slides
+
+📊 **[Chapter 13 slide deck (PDF)](../../slides/Chapter-13-Capstone-Project.pdf)** — a visual
+summary of assembling the full semantic answer engine.
+
+---
+
 ## Extension ideas (make it a portfolio piece)
 
 - **A UI** — wrap it in a small Streamlit/Gradio app with a search box and answer panel.

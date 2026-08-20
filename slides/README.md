@@ -18,5 +18,6 @@ Each deck is linked from its chapter's README.
 | 10 — RAG | [Chapter-10-RAG.pdf](Chapter-10-RAG.pdf) |
 | 11 — Chunking & Pipelines | [Chapter-11-Chunking-and-Pipelines.pdf](Chapter-11-Chunking-and-Pipelines.pdf) |
 | 12 — Advanced Topics | [Chapter-12-Advanced-Topics.pdf](Chapter-12-Advanced-Topics.pdf) |
+| 13 — Capstone Project | [Chapter-13-Capstone-Project.pdf](Chapter-13-Capstone-Project.pdf) |
 
-*(More chapters are added here as their decks are produced.)*
+*All 14 chapter decks are complete.*
