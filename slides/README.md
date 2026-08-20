@@ -14,5 +14,6 @@ Each deck is linked from its chapter's README.
 | 6 — Vector Databases & ANN | [Chapter-06-Vector-Databases-and-ANN.pdf](Chapter-06-Vector-Databases-and-ANN.pdf) |
 | 7 — Re-ranking | [Chapter-07-Re-ranking.pdf](Chapter-07-Re-ranking.pdf) |
 | 8 — Hybrid Search | [Chapter-08-Hybrid-Search.pdf](Chapter-08-Hybrid-Search.pdf) |
+| 9 — Evaluating Search | [Chapter-09-Evaluating-Search.pdf](Chapter-09-Evaluating-Search.pdf) |
 
 *(More chapters are added here as their decks are produced.)*
