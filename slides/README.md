@@ -16,5 +16,6 @@ Each deck is linked from its chapter's README.
 | 8 — Hybrid Search | [Chapter-08-Hybrid-Search.pdf](Chapter-08-Hybrid-Search.pdf) |
 | 9 — Evaluating Search | [Chapter-09-Evaluating-Search.pdf](Chapter-09-Evaluating-Search.pdf) |
 | 10 — RAG | [Chapter-10-RAG.pdf](Chapter-10-RAG.pdf) |
+| 11 — Chunking & Pipelines | [Chapter-11-Chunking-and-Pipelines.pdf](Chapter-11-Chunking-and-Pipelines.pdf) |
 
 *(More chapters are added here as their decks are produced.)*

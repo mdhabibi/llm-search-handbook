@@ -135,6 +135,13 @@ You will:
 
 ---
 
+## Slides
+
+📊 **[Chapter 11 slide deck (PDF)](../../slides/Chapter-11-Chunking-and-Pipelines.pdf)** — a visual
+summary of chunking and production ingestion pipelines.
+
+---
+
 ## Going deeper 🔴
 
 - **Token vs. word chunking.** Embed limits are in *tokens*; word counts approximate. For precise
