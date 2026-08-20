@@ -109,6 +109,13 @@ You will:
 
 ---
 
+## Slides
+
+📊 **[Chapter 8 slide deck (PDF)](../../slides/Chapter-08-Hybrid-Search.pdf)** — a visual summary of
+fusing keyword and semantic retrieval.
+
+---
+
 ## Going deeper 🔴
 
 - **Tuning k in RRF.** Larger *k* flattens the contribution of top ranks (more democratic across
