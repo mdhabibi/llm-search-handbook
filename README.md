@@ -139,22 +139,22 @@ Full details (including troubleshooting and optional GPU notes) are in
 
 ## The learning path at a glance
 
-| # | Chapter | You will learn |
-|---|---------|----------------|
-| 0 | [Introduction](chapters/00-introduction/) | What semantic search is and how to use this repo |
-| 1 | [Foundations of Information Retrieval](chapters/01-foundations-of-information-retrieval/) | The search problem before LLMs |
-| 2 | [Keyword / Lexical Search](chapters/02-keyword-lexical-search/) | TF-IDF, BM25, the inverted index |
-| 3 | [From Text to Vectors](chapters/03-text-to-vectors/) | Tokens, one-hot, bag-of-words → vectors |
-| 4 | [Embeddings Deep Dive](chapters/04-embeddings-deep-dive/) | Word, sentence & document embeddings |
-| 5 | [Dense Retrieval & Semantic Search](chapters/05-dense-retrieval-semantic-search/) | Search by meaning |
-| 6 | [Vector Databases & ANN](chapters/06-vector-databases-and-ann/) | Scaling to millions of vectors |
-| 7 | [Re-ranking](chapters/07-reranking/) | Cross-encoders to reorder results |
-| 8 | [Hybrid Search](chapters/08-hybrid-search/) | Combining keyword + semantic |
-| 9 | [Evaluating Search](chapters/09-evaluating-search/) | Precision, recall, MRR, nDCG |
-| 10 | [RAG](chapters/10-rag-retrieval-augmented-generation/) | Grounded answers from an LLM |
-| 11 | [Chunking & Production Pipelines](chapters/11-chunking-and-production-pipelines/) | Building it for real |
-| 12 | [Advanced Topics](chapters/12-advanced-topics/) | ColBERT, multimodal, agentic RAG |
-| 13 | [Capstone Project](chapters/13-capstone-project/) | Build a full system |
+| # | Chapter | You will learn | Notebook | Slides |
+|---|---------|----------------|:--------:|:------:|
+| 0 | [Introduction](chapters/00-introduction/) | What semantic search is and how to use this repo | [📓](chapters/00-introduction/notebooks/00_pipeline_tour.ipynb) | [📊](slides/Chapter-00-Introduction.pdf) |
+| 1 | [Foundations of Information Retrieval](chapters/01-foundations-of-information-retrieval/) | The search problem before LLMs | [📓](chapters/01-foundations-of-information-retrieval/notebooks/01_words_vs_meaning.ipynb) | [📊](slides/Chapter-01-Foundations-of-IR.pdf) |
+| 2 | [Keyword / Lexical Search](chapters/02-keyword-lexical-search/) | TF-IDF, BM25, the inverted index | [📓](chapters/02-keyword-lexical-search/notebooks/02_keyword_search.ipynb) | [📊](slides/Chapter-02-Keyword-Search.pdf) |
+| 3 | [From Text to Vectors](chapters/03-text-to-vectors/) | Tokens, one-hot, bag-of-words → vectors | [📓](chapters/03-text-to-vectors/notebooks/03_text_to_vectors.ipynb) | [📊](slides/Chapter-03-From-Text-to-Vectors.pdf) |
+| 4 | [Embeddings Deep Dive](chapters/04-embeddings-deep-dive/) | Word, sentence & document embeddings | [📓](chapters/04-embeddings-deep-dive/notebooks/04_embeddings.ipynb) | [📊](slides/Chapter-04-Embeddings-Deep-Dive.pdf) |
+| 5 | [Dense Retrieval & Semantic Search](chapters/05-dense-retrieval-semantic-search/) | Search by meaning | [📓](chapters/05-dense-retrieval-semantic-search/notebooks/05_dense_retrieval.ipynb) | [📊](slides/Chapter-05-Dense-Retrieval.pdf) |
+| 6 | [Vector Databases & ANN](chapters/06-vector-databases-and-ann/) | Scaling to millions of vectors | [📓](chapters/06-vector-databases-and-ann/notebooks/06_vector_databases.ipynb) | [📊](slides/Chapter-06-Vector-Databases-and-ANN.pdf) |
+| 7 | [Re-ranking](chapters/07-reranking/) | Cross-encoders to reorder results | [📓](chapters/07-reranking/notebooks/07_reranking.ipynb) | [📊](slides/Chapter-07-Re-ranking.pdf) |
+| 8 | [Hybrid Search](chapters/08-hybrid-search/) | Combining keyword + semantic | [📓](chapters/08-hybrid-search/notebooks/08_hybrid_search.ipynb) | [📊](slides/Chapter-08-Hybrid-Search.pdf) |
+| 9 | [Evaluating Search](chapters/09-evaluating-search/) | Precision, recall, MRR, nDCG | [📓](chapters/09-evaluating-search/notebooks/09_evaluating_search.ipynb) | [📊](slides/Chapter-09-Evaluating-Search.pdf) |
+| 10 | [RAG](chapters/10-rag-retrieval-augmented-generation/) | Grounded answers from an LLM | [📓](chapters/10-rag-retrieval-augmented-generation/notebooks/10_rag.ipynb) | [📊](slides/Chapter-10-RAG.pdf) |
+| 11 | [Chunking & Production Pipelines](chapters/11-chunking-and-production-pipelines/) | Building it for real | [📓](chapters/11-chunking-and-production-pipelines/notebooks/11_chunking_and_pipelines.ipynb) | [📊](slides/Chapter-11-Chunking-and-Pipelines.pdf) |
+| 12 | [Advanced Topics](chapters/12-advanced-topics/) | ColBERT, multimodal, agentic RAG | [📓](chapters/12-advanced-topics/notebooks/12_advanced_topics.ipynb) | [📊](slides/Chapter-12-Advanced-Topics.pdf) |
+| 13 | [Capstone Project](chapters/13-capstone-project/) | Build a full system | [📓](chapters/13-capstone-project/notebooks/13_capstone.ipynb) | [📊](slides/Chapter-13-Capstone-Project.pdf) |
 
 See [`ROADMAP.md`](ROADMAP.md) for the detailed outline of every chapter.
 
