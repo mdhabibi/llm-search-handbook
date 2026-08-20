@@ -115,6 +115,13 @@ You will:
 
 ---
 
+## Slides
+
+📊 **[Chapter 6 slide deck (PDF)](../../slides/Chapter-06-Vector-Databases-and-ANN.pdf)** — a visual
+summary of vector databases and approximate nearest neighbor search.
+
+---
+
 ## Going deeper 🔴
 
 - **The three-way trade-off.** Every ANN index balances **recall**, **speed (QPS)**, and **memory**.
