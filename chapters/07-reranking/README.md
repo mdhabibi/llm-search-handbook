@@ -101,6 +101,13 @@ You will:
 
 ---
 
+## Slides
+
+📊 **[Chapter 7 slide deck (PDF)](../../slides/Chapter-07-Re-ranking.pdf)** — a visual summary of
+the retrieve-and-re-rank pattern.
+
+---
+
 ## Going deeper 🔴
 
 - **Choosing the candidate depth (top-k).** Re-rank too few and you might exclude the best

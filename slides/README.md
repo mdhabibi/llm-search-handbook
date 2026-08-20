@@ -12,5 +12,6 @@ Each deck is linked from its chapter's README.
 | 4 — Embeddings Deep Dive | [Chapter-04-Embeddings-Deep-Dive.pdf](Chapter-04-Embeddings-Deep-Dive.pdf) |
 | 5 — Dense Retrieval | [Chapter-05-Dense-Retrieval.pdf](Chapter-05-Dense-Retrieval.pdf) |
 | 6 — Vector Databases & ANN | [Chapter-06-Vector-Databases-and-ANN.pdf](Chapter-06-Vector-Databases-and-ANN.pdf) |
+| 7 — Re-ranking | [Chapter-07-Re-ranking.pdf](Chapter-07-Re-ranking.pdf) |
 
 *(More chapters are added here as their decks are produced.)*
