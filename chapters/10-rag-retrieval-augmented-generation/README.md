@@ -116,6 +116,13 @@ You will:
 
 ---
 
+## Slides
+
+📊 **[Chapter 10 slide deck (PDF)](../../slides/Chapter-10-RAG.pdf)** — a visual summary of
+retrieval-augmented generation.
+
+---
+
 ## Going deeper 🔴
 
 - **Grounding is not a guarantee.** Models can still ignore the context or over-generalize.
