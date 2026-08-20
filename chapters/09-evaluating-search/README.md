@@ -130,6 +130,13 @@ You will:
 
 ---
 
+## Slides
+
+📊 **[Chapter 9 slide deck (PDF)](../../slides/Chapter-09-Evaluating-Search.pdf)** — a visual summary
+of measuring search quality with IR metrics.
+
+---
+
 ## Going deeper 🔴
 
 - **Offline vs. online.** Offline metrics (this chapter) use a fixed labeled set. Online
