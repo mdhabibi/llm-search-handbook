@@ -102,6 +102,13 @@ You will:
 
 ---
 
+## Slides
+
+📊 **[Chapter 12 slide deck (PDF)](../../slides/Chapter-12-Advanced-Topics.pdf)** — a visual summary
+of advanced retrieval techniques.
+
+---
+
 ## Going deeper 🔴
 
 - **HyDE caveats.** It adds an LLM call (latency/cost) and can hurt when the model hallucinates a
