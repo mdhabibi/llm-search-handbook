@@ -82,6 +82,13 @@ nav:
       - Code of Conduct: CODE_OF_CONDUCT.md
       - Changelog: CHANGELOG.md
 
+plugins:
+  - search
+  - mkdocs-jupyter:
+      execute: false
+      include_source: true
+      no_input: false
+
 markdown_extensions:
   - abbr
   - admonition
