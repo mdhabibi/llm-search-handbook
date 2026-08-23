@@ -26,9 +26,14 @@ locally.
   <img alt="Python" src="https://img.shields.io/badge/python-3.10%E2%80%933.12-3776AB">
   <img alt="License" src="https://img.shields.io/badge/license-MIT%20%2B%20CC--BY--4.0-16A34A">
   <img alt="Status" src="https://img.shields.io/badge/status-complete-16A34A">
+  <a href="https://mdhabibi.github.io/llm-search-handbook/"><img alt="Docs" src="https://img.shields.io/badge/docs-online-2563EB"></a>
+  <a href="https://github.com/mdhabibi/llm-search-handbook/actions/workflows/docs.yml"><img alt="Deploy docs" src="https://img.shields.io/github/actions/workflow/status/mdhabibi/llm-search-handbook/docs.yml?label=docs%20build"></a>
   <img alt="Last commit" src="https://img.shields.io/github/last-commit/mdhabibi/llm-search-handbook?color=2563EB">
   <img alt="Stars" src="https://img.shields.io/github/stars/mdhabibi/llm-search-handbook?style=social">
 </p>
+
+🌐 **[Read the course online →](https://mdhabibi.github.io/llm-search-handbook/)** — the full
+handbook as a fast, searchable website (light/dark, mobile-friendly, math rendered). No install needed.
 
 📘 **[Download the e-book (PDF) →](Search-Semantically-ebook.pdf)** — all 14 chapters in one
 colorful, ebook-formatted document (~69 pages) with a designed cover, table of contents,
