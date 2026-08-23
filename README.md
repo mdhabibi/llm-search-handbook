@@ -20,6 +20,11 @@ diagrams, and code here are original** and written to stand on their own. We use
 locally.
 
 <p align="center">
+  <img src="assets/demo.png" alt="Keyword search vs semantic search on the same query — semantic ranks the relevant documents first" width="92%">
+</p>
+<p align="center"><sub><em>Keyword vs. semantic search on the same query and corpus — real output from this repo (BM25 + <code>all-MiniLM</code>), regenerate with <a href="scripts/make_demo.py"><code>scripts/make_demo.py</code></a>.</em></sub></p>
+
+<p align="center">
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-2563EB">
   <img alt="Chapters" src="https://img.shields.io/badge/chapters-14%2F14-2563EB">
   <img alt="Notebooks" src="https://img.shields.io/badge/notebooks-14-2563EB">
