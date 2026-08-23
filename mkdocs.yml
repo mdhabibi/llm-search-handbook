@@ -29,6 +29,7 @@ not_in_nav: |
 theme:
   name: material
   language: en
+  custom_dir: overrides
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
