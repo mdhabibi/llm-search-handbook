@@ -1,0 +1,122 @@
+site_name: Search Semantically
+site_description: >-
+  A beginner-to-expert, open-source course on Large Language Models & Semantic
+  Search — keyword search, embeddings, dense retrieval, vector databases,
+  re-ranking, hybrid search, evaluation, and RAG.
+site_author: Dr. Mahdi Habibi
+site_url: https://mdhabibi.github.io/llm-search-handbook/
+
+repo_url: https://github.com/mdhabibi/llm-search-handbook
+repo_name: mdhabibi/llm-search-handbook
+edit_uri: edit/main/
+
+# `docs/` is assembled by scripts/build_docs.py, which mirrors the repo content so
+# every existing relative link (../../slides, ../../src, ../../GLOSSARY.md) keeps
+# working unchanged. Run that script before `mkdocs build` / `mkdocs serve`.
+docs_dir: docs
+site_dir: site
+
+exclude_docs: |
+  assets/make_graphics.py
+
+not_in_nav: |
+  src/README.md
+  data/README.md
+  slides/README.md
+  setup/SETUP.md
+  CONTENT-LICENSE.md
+
+theme:
+  name: material
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: README.md
+  - Roadmap: ROADMAP.md
+  - Chapters:
+      - 0 · Introduction: chapters/00-introduction/README.md
+      - 1 · Foundations of IR: chapters/01-foundations-of-information-retrieval/README.md
+      - 2 · Keyword / Lexical Search: chapters/02-keyword-lexical-search/README.md
+      - 3 · From Text to Vectors: chapters/03-text-to-vectors/README.md
+      - 4 · Embeddings Deep Dive: chapters/04-embeddings-deep-dive/README.md
+      - 5 · Dense Retrieval: chapters/05-dense-retrieval-semantic-search/README.md
+      - 6 · Vector Databases & ANN: chapters/06-vector-databases-and-ann/README.md
+      - 7 · Re-ranking: chapters/07-reranking/README.md
+      - 8 · Hybrid Search: chapters/08-hybrid-search/README.md
+      - 9 · Evaluating Search: chapters/09-evaluating-search/README.md
+      - 10 · RAG: chapters/10-rag-retrieval-augmented-generation/README.md
+      - 11 · Chunking & Pipelines: chapters/11-chunking-and-production-pipelines/README.md
+      - 12 · Advanced Topics: chapters/12-advanced-topics/README.md
+      - 13 · Capstone Project: chapters/13-capstone-project/README.md
+  - Glossary: GLOSSARY.md
+  - Project:
+      - Contributing: CONTRIBUTING.md
+      - Code of Conduct: CODE_OF_CONDUCT.md
+      - Changelog: CHANGELOG.md
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_javascript:
+  - assets/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/mdhabibi/llm-search-handbook
+
+validation:
+  nav:
+    omitted_files: ignore
+    not_found: warn
+  links:
+    not_found: warn
+    absolute_links: ignore
+    unrecognized_links: ignore
+    anchors: ignore

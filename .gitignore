@@ -17,6 +17,10 @@ models/
 .idea/
 .vscode/
 
+# generated docs site (mkdocs)
+/docs/
+/site/
+
 # generated ebook intermediate
 ebook/book.md
 ebook/*.png
