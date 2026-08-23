@@ -1,0 +1,3 @@
+# Test dependencies. The tested modules (metrics, chunking, corpus) use only the
+# standard library, so the suite runs fast with no heavy ML downloads.
+pytest>=8.0
