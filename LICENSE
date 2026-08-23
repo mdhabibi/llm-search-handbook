@@ -19,18 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-NOTE ON DUAL LICENSING
-
-This project contains both software and educational content:
-
-- CODE (all source files, notebooks, and scripts) is licensed under the MIT
-  License above.
-- EDUCATIONAL CONTENT (chapter text, diagrams, the e-book PDF, and other prose)
-  is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
-  See CONTENT-LICENSE.md.
-
-You are free to use, adapt, and share both, provided you keep the MIT notice for
-code and give appropriate credit for content.
