@@ -6,6 +6,11 @@
     {"query": "strong pain on one side of the head", "relevant_ids": [2, 3]},
     {"query": "what is the capital city of a country", "relevant_ids": [6, 7]},
     {"query": "a hot caffeinated drink", "relevant_ids": [12, 13]},
-    {"query": "the most watched television event", "relevant_ids": [8, 9]}
+    {"query": "the most watched television event", "relevant_ids": [8, 9]},
+    {"query": "how do you measure whether two sentences say the same thing", "relevant_ids": [11]},
+    {"query": "software that finds documents quickly", "relevant_ids": [10]},
+    {"query": "what makes precipitation fall from the sky", "relevant_ids": [15]},
+    {"query": "where does a country run its parliament from", "relevant_ids": [6, 7]},
+    {"query": "do any sea creatures feed their babies milk", "relevant_ids": [5]}
   ]
 }

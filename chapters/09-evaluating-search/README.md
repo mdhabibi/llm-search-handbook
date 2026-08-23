@@ -33,7 +33,7 @@ of them. That's an **evaluation set** plus **metrics**.
 
 Evaluation starts with a labeled set: queries paired with the documents a human judged
 **relevant**. We ship a tiny one in [`data/eval_queries.json`](../../data/eval_queries.json) —
-six queries over our 16-passage corpus, each with its relevant document ids.
+eleven queries over our 16-passage corpus, each with its relevant document ids.
 
 ```json
 {"query": "a large animal that lives in the ocean", "relevant_ids": [4, 5]}
@@ -142,7 +142,7 @@ of measuring search quality with IR metrics.
 - **Offline vs. online.** Offline metrics (this chapter) use a fixed labeled set. Online
   evaluation (**A/B testing**, interleaving) measures real user behavior — clicks, dwell time,
   conversions — which is the ultimate ground truth but slower and costlier to run.
-- **Statistical significance.** With six queries, differences are noise. Real evaluations use
+- **Statistical significance.** With eleven queries, differences are noise. Real evaluations use
   hundreds/thousands of queries and significance tests (e.g., paired t-test) before declaring a
   winner.
 - **Graded relevance & judgment cost.** nDCG shines with graded labels. Gathering judgments is
@@ -178,7 +178,7 @@ offline vs. online evaluation, A/B testing. *(See [GLOSSARY](../../GLOSSARY.md).
 1. Give the one-line question each of precision@k, recall@k, MRR, and nDCG answers.
 2. Why does nDCG need to be *normalized*, and what by?
 3. When is MRR the right metric to optimize, and when is it misleading?
-4. Why are six queries not enough to declare one retriever better than another?
+4. Why are eleven queries not enough to declare one retriever better than another?
 5. What's the danger of tuning k₁, b, or α on the same queries you report metrics on?
 
 ---
