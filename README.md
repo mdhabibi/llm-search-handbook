@@ -26,6 +26,7 @@ locally.
   <img alt="Python" src="https://img.shields.io/badge/python-3.10%E2%80%933.12-3776AB">
   <img alt="License" src="https://img.shields.io/badge/license-MIT%20%2B%20CC--BY--4.0-16A34A">
   <img alt="Status" src="https://img.shields.io/badge/status-complete-16A34A">
+  <a href="https://github.com/mdhabibi/llm-search-handbook/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/mdhabibi/llm-search-handbook/ci.yml?label=tests"></a>
   <a href="https://mdhabibi.github.io/llm-search-handbook/"><img alt="Docs" src="https://img.shields.io/badge/docs-online-2563EB"></a>
   <a href="https://github.com/mdhabibi/llm-search-handbook/actions/workflows/docs.yml"><img alt="Deploy docs" src="https://img.shields.io/github/actions/workflow/status/mdhabibi/llm-search-handbook/docs.yml?label=docs%20build"></a>
   <img alt="Last commit" src="https://img.shields.io/github/last-commit/mdhabibi/llm-search-handbook?color=2563EB">
@@ -179,6 +180,8 @@ reusable modules live in `src/`:
 
 Every notebook's logic was verified; steps needing a model download (embeddings,
 cross-encoder, LLM) run on your machine, while the offline logic is tested end to end.
+The `src/` metrics, chunking, and corpus helpers ship with a **pytest suite** run on
+every push via **GitHub Actions** (Python 3.10–3.12).
 
 ---
 
