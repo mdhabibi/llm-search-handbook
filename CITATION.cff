@@ -8,8 +8,11 @@ abstract: >-
 type: software
 version: 1.0.0
 date-released: 2026-08-18
-license: MIT
+license:
+  - MIT
+  - CC-BY-4.0
 repository-code: "https://github.com/mdhabibi/llm-search-handbook"
+url: "https://mdhabibi.github.io/llm-search-handbook/"
 authors:
   - family-names: Habibi
     given-names: Mahdi

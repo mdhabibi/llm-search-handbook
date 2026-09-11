@@ -13,7 +13,7 @@ with no paid API keys required (we use open-source models).
 ## 2. Create a virtual environment
 
 ```bash
-cd "Search Semantically"
+cd llm-search-handbook
 python -m venv .venv
 
 # Activate it:

@@ -28,6 +28,7 @@ ebook/warnings.log
 ebook/*.log
 *-protected.pdf
 
-# raw NotebookLM export (original, watermarked) — the de-watermarked deck ships as
-# slides/Chapter-02-Keyword-Search-NotebookLM.pptx instead
-slides/notebooklm/Keyword_Search_Schematic.*
+
+# Private launch/maintainer notes (kept out of the public repo)
+/.github/LAUNCH.md
+/.github/ABOUT.md

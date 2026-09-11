@@ -13,11 +13,8 @@ Language Models (LLMs) transform information search. Every chapter pairs **intui
 explanations** (analogies, diagrams, worked examples) with **runnable code and
 notebooks** so you can learn the idea *and* build it.
 
-It is inspired by the ideas in the DeepLearning.AI × Cohere short course
-*"Large Language Models with Semantic Search"*, but **all explanations, examples,
-diagrams, and code here are original** and written to stand on their own. We use an
-**open-source-first** toolkit (no paid API keys required) so anyone can run everything
-locally.
+The course uses an **open-source-first** toolkit — no paid API keys required — so anyone
+can run everything locally. Repository: `mdhabibi/llm-search-handbook`.
 
 <p align="center">
   <img src="assets/demo.png" alt="Keyword search vs semantic search on the same query — semantic ranks the relevant documents first" width="92%">
@@ -35,7 +32,6 @@ locally.
   <a href="https://mdhabibi.github.io/llm-search-handbook/"><img alt="Docs" src="https://img.shields.io/badge/docs-online-2563EB"></a>
   <a href="https://github.com/mdhabibi/llm-search-handbook/actions/workflows/docs.yml"><img alt="Deploy docs" src="https://img.shields.io/github/actions/workflow/status/mdhabibi/llm-search-handbook/docs.yml?label=docs%20build"></a>
   <img alt="Last commit" src="https://img.shields.io/github/last-commit/mdhabibi/llm-search-handbook?color=2563EB">
-  <img alt="Stars" src="https://img.shields.io/github/stars/mdhabibi/llm-search-handbook?style=social">
 </p>
 
 🌐 **[Read the course online →](https://mdhabibi.github.io/llm-search-handbook/)** — the full
@@ -46,7 +42,7 @@ colorful, ebook-formatted document (~69 pages) with a designed cover, table of c
 callouts, typeset math, and an answers appendix. Perfect for reading offline or sharing.
 (Rebuild it any time with [`ebook/build.sh`](ebook/build.sh).) Every page carries a footer and a light **watermark** with the author's name, and the PDF embeds author metadata.
 
-> ⭐ **If this course helps you, please [star the repo](https://github.com/mdhabibi/llm-search-handbook)** — it helps others discover it and motivates new chapters.
+> ⭐ **If this course helps you, please [star the repo](https://github.com/mdhabibi/llm-search-handbook)** — it helps other learners find it.
 
 ---
 
@@ -86,7 +82,7 @@ Difficulty is marked throughout:
 ## How the repo is organized
 
 ```
-Search Semantically/
+llm-search-handbook/
 ├── README.md                       ← you are here
 ├── ROADMAP.md                      ← the full curriculum & learning path
 ├── GLOSSARY.md                     ← every key term, defined simply
@@ -120,8 +116,7 @@ Every chapter folder follows the **same modular layout**:
 ```
 NN-chapter-name/
 ├── README.md      ← the lesson: concepts, intuition, diagrams, worked examples
-├── notebooks/     ← hands-on Jupyter notebooks you run yourself
-└── assets/        ← chapter-specific images and diagrams
+└── notebooks/     ← hands-on Jupyter notebooks you run yourself
 ```
 
 ---
@@ -130,7 +125,7 @@ NN-chapter-name/
 
 ```bash
 # 1. Clone and enter the repo
-git clone <your-repo-url> && cd "Search Semantically"
+git clone https://github.com/mdhabibi/llm-search-handbook.git && cd llm-search-handbook
 
 # 2. Create an environment and install dependencies
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
@@ -215,7 +210,7 @@ see [`CONTRIBUTING.md`](CONTRIBUTING.md) and our [`CODE_OF_CONDUCT.md`](CODE_OF_
 
 If you use this course, please cite it (metadata in [`CITATION.cff`](CITATION.cff)):
 
-> Habibi, M. (Dr.) (2026). *Search Semantically — Large Language Models & Semantic Search* (v1.0.0).
+> Habibi, M. (2026). *Search Semantically — Large Language Models & Semantic Search* (v1.0.0).
 > https://github.com/mdhabibi/llm-search-handbook
 
 ---
@@ -239,6 +234,7 @@ This project is **dual-licensed**:
 - **Code** (source files, notebooks, scripts) — [MIT License](LICENSE).
 - **Content** (chapter text, diagrams, glossary, the e-book) — [CC BY 4.0](CONTENT-LICENSE.md).
 
-All explanations, examples, diagrams, and code are original. The course is inspired by — not
-copied from — the DeepLearning.AI × Cohere short course *"Large Language Models with Semantic
-Search"*. External papers and tools are credited in each chapter's *References* section.
+The chapter text, worked examples, code and diagrams are original work. The course is inspired
+by — not copied from — the DeepLearning.AI × Cohere short course *"Large Language Models with
+Semantic Search"*. The slide decks were assembled with presentation-generation tools from the
+chapter text. External papers and tools are credited in each chapter's *References* section.

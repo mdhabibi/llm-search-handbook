@@ -190,4 +190,3 @@ To keep the experience consistent, **every chapter README** follows the same tem
 | 12 | Advanced Topics | 🟩 Complete |
 | 13 | Capstone Project | 🟩 Complete |
 
-> Update a row to 🟨 In progress / 🟩 Complete as we flesh out each chapter from your shared studies.

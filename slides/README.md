@@ -20,4 +20,5 @@ Each deck is linked from its chapter's README.
 | 12 — Advanced Topics | [Chapter-12-Advanced-Topics.pdf](Chapter-12-Advanced-Topics.pdf) |
 | 13 — Capstone Project | [Chapter-13-Capstone-Project.pdf](Chapter-13-Capstone-Project.pdf) |
 
-*All 14 chapter decks are complete.*
+*All 14 chapter decks are complete.* The decks were assembled with presentation-generation
+tools from each chapter's text; the chapter READMEs remain the authoritative source.

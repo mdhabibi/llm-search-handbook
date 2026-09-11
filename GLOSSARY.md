@@ -5,8 +5,8 @@ one-line definition, a slightly fuller explanation, and the chapter where it's i
 Terms are grouped by theme; within each group they're ordered roughly from foundational to
 advanced.
 
-> Tip: when a chapter introduces a term, it links back here. As we write chapters, we'll
-> keep this file the single source of truth for definitions.
+> Tip: when a chapter introduces a term, it links back here. This file is the single
+> source of truth for definitions across the course.
 
 ---
 
