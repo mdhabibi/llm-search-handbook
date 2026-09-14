@@ -116,6 +116,45 @@ You will:
 
 ---
 
+## Evaluating a RAG system: retrieval vs. generation 🟡
+
+A RAG answer can fail in two very different places, and a single "was the answer good?" score
+hides *which*. Always evaluate the two halves **separately**:
+
+- **Retrieval quality** — did the right passage(s) reach the context at all?
+- **Generation quality** — given that context, did the model use it *faithfully* and actually
+  *answer the question*?
+
+Separating them matters because the fix is opposite in each case:
+
+| Symptom | Where it broke | What to fix |
+|---------|----------------|-------------|
+| The evidence was never retrieved | **Retrieval** | the retriever (Ch 6–8): embeddings, hybrid, re-ranking, chunking |
+| The passage *was* retrieved, but the answer misses or misreads it | **Generation** | the prompt, the model, the context budget |
+
+A blended answer score can look identical in both situations — yet one is a **"missing evidence"**
+problem and the other an **"answer construction"** problem. Measuring each half tells you which.
+
+**Measuring retrieval** is exactly Chapter 9: label which passages are relevant for each question
+and compute **recall@k / MRR / nDCG** on what the retriever returned. If recall@k is low, the LLM
+never had a chance — stop tuning the prompt and fix the retriever.
+
+**Measuring generation** (conditioned on the retrieved context) usually tracks two things:
+
+- **Faithfulness / groundedness** — is every claim in the answer supported by the passages
+  (no hallucination)?
+- **Answer relevance** — does the answer actually address the question, not just echo context?
+
+These are harder to score automatically. Common approaches are human ratings or an
+**LLM-as-a-judge** that reads `(question, context, answer)` and rates faithfulness and relevance —
+cheaper to run, but calibrate it against a few human labels first.
+
+> **Rule of thumb:** condition generation metrics on *good* retrieval. If you score answers over
+> contexts that don't even contain the evidence, you're measuring the retriever's failures as if
+> they were the model's.
+
+---
+
 ## Slides
 
 📊 **[Chapter 10 slide deck (PDF)](../../slides/Chapter-10-RAG.pdf)** — a visual summary of
@@ -157,7 +196,8 @@ retrieval-augmented generation.
 ## Key terms
 
 Large Language Model (LLM), hallucination, Retrieval-Augmented Generation (RAG), grounding,
-context window, prompt template, refusal, citation, faithfulness. *(See
+context window, prompt template, refusal, citation, faithfulness, answer relevance,
+retrieval vs. generation evaluation, LLM-as-a-judge. *(See
 [GLOSSARY](../../GLOSSARY.md).)*
 
 ---
@@ -169,6 +209,7 @@ context window, prompt template, refusal, citation, faithfulness. *(See
 3. What two clauses in the prompt reduce hallucination, and how?
 4. Why are most RAG failures actually *retrieval* failures?
 5. When would you choose RAG over fine-tuning to give a model new knowledge?
+6. A RAG answer comes back wrong. What single check tells you whether to fix the *retriever* or the *prompt/model*, and why?
 
 ---
 
@@ -211,12 +252,21 @@ When knowledge changes often, must be **citable/verifiable**, or is private/larg
 
 </details>
 
+<details>
+<summary><b>Show answer — 6</b></summary>
+
+Check **what was retrieved** (and compute retrieval recall for that question). If the evidence never made it into the context, it's a **retrieval** failure — fix the retriever (Ch 6–8). If the right passage *was* there but the answer missed or misread it, it's a **generation** failure — fix the prompt, model, or context budget. Evaluating retrieval and generation separately localizes the fix instead of guessing.
+
+</details>
+
 <!-- cyu-answers:end -->
 
 ## References
 
 - Lewis et al., *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks* (RAG, 2020).
 - Liu et al., *Lost in the Middle: How Language Models Use Long Contexts* (2023).
+- Es et al., *RAGAS: Automated Evaluation of Retrieval Augmented Generation* (2023) — separates
+  faithfulness, answer relevance, and context relevance.
 - Hugging Face `transformers` documentation (open-source generation used here).
 - DeepLearning.AI × Cohere, *Large Language Models with Semantic Search*, Lesson on generating
   answers (inspiration).
