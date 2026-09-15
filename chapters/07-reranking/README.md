@@ -34,6 +34,44 @@ fast but approximate    ─▶   re-score each of the 50   ─▶   precise top-
 
 ---
 
+## "Similar" is not the same as "relevant"
+
+There's a deeper problem than imperfect ordering, and it's worth sitting with because it shapes
+everything downstream — including RAG in Chapter 10.
+
+**Dense retrieval returns the nearest vector. Nothing more.** It finds the text most *similar*
+to your query — not the text that *answers* it, and certainly not the text that is *correct*.
+Those three things come apart constantly.
+
+Take the query **"What is the capital of Canada?"** against these passages:
+
+| Candidate | True? | Answers the query? | Sits near the query in vector space? |
+|---|:---:|:---:|:---:|
+| "The capital of Canada is Ottawa." | ✅ | ✅ | ✅ |
+| "Toronto is in Canada." | ✅ | ❌ on-topic, but not an answer | ✅ |
+| "The capital of France is Paris." | ✅ | ❌ right *shape*, wrong country | ✅ |
+| "The capital of Ontario is Toronto." | ✅ | ❌ answers a *different* question | ✅ **very** close |
+| "The capital of Canada is Sydney." | ❌ **false** | ❌ | ✅ **very** close |
+
+Every one of these is a near neighbour, because they all share the query's vocabulary and
+shape — *capital*, *Canada*, *city is X*. An embedding model was trained to place texts that
+**mean similar things** close together, and "the capital of Ontario is Toronto" genuinely does
+mean something very similar to "the capital of Canada is Ottawa." The geometry is behaving
+exactly as designed.
+
+Look at the last row especially. **An embedding has no concept of truth.** A confidently stated
+falsehood uses the same words, in the same shape, as the correct answer — so it lands in the
+same neighbourhood and can outrank the truth. Cosine similarity cannot possibly detect this;
+nothing in the vector encodes whether the sentence is *right*.
+
+> This is why "my retrieval looks fine but the answers are wrong" is such a common failure. The
+> retriever did its job — it returned similar text. Similar was never the same as correct.
+
+Re-ranking is the fix: a model that scores **how well this passage answers this query**, rather
+than how close two vectors happen to sit.
+
+---
+
 ## Bi-encoder vs. cross-encoder — the key distinction
 
 This is the heart of the chapter.
@@ -84,6 +122,44 @@ It outputs a relevance score for each (query, document) pair. We sort candidates
 
 ---
 
+## How a re-ranker learns relevance
+
+Why can a cross-encoder reject *"The capital of Ontario is Toronto"* when cosine similarity
+can't? Because it was **explicitly trained to**.
+
+Training data is pairs with a label:
+
+```
+POSITIVES (score high)                      NEGATIVES (score low)
+─────────────────────────                   ──────────────────────────────
+("capital of Canada?",                      ("capital of Canada?",
+ "The capital of Canada is Ottawa.")         "The capital of Ontario is Toronto.")
+
+("tallest person ever?",                    ("capital of Canada?",
+ "Robert Wadlow was the tallest man.")       "Toronto is in Canada.")
+```
+
+Show the model hundreds of thousands of these and it learns a function that says *"this passage
+answers this query"* — not *"these two texts are alike."*
+
+The crucial ingredient is the **hard negatives**: wrong passages that are *deliberately chosen
+to be similar* to the query. Training on easy negatives (random unrelated passages) teaches the
+model nothing useful — telling "capital of Canada" apart from a recipe for soup is trivial. The
+skill worth learning is the near-miss, and you only get it by training on near-misses. In
+practice, hard negatives are often mined by running a first-stage retriever and taking its
+top-ranked *wrong* answers — the very distractors the re-ranker will face in production.
+
+This is the same **contrastive** idea behind embedding models (Chapter 4), with one decisive
+difference: the cross-encoder sees the query and passage *together*, so it can judge whether one
+actually answers the other. A bi-encoder must commit to a passage's vector before it has any
+idea what will be asked.
+
+> **What the score means.** MS MARCO cross-encoders emit an unbounded logit (roughly −11 to +11;
+> apply a sigmoid for a 0–1 relevance probability). Either way it's a *ranking* signal within one
+> query — see the pitfall below about comparing scores across queries.
+
+---
+
 ## Hands-on
 
 Notebook: [`notebooks/07_reranking.ipynb`](notebooks/07_reranking.ipynb)
@@ -95,6 +171,9 @@ You will:
 3. Watch the ordering improve — a relevant passage that sat at rank 4 jumps to rank 1.
 4. Wrap it as a reusable `retrieve_then_rerank(query)` function.
 5. Discuss the cost: how big should the first-stage candidate set be? (The recall/latency knob.)
+6. **Rescue a weak first stage:** run plain BM25 keyword search — which puts an irrelevant
+   passage at rank 1 and buries the real answer at rank 7 — then re-rank the *whole* candidate
+   list and watch the answer climb to the top.
 
 > The cross-encoder downloads on first run (internet once). The pipeline logic (take top-k,
 > score pairs, re-sort) is written to be testable with a mock scorer.
@@ -140,7 +219,8 @@ the retrieve-and-re-rank pattern.
 ## Key terms
 
 re-ranking, cross-encoder, bi-encoder, two-stage retrieval, candidate set, first-stage recall,
-MS MARCO, listwise ranking. *(See [GLOSSARY](../../GLOSSARY.md).)*
+relevance score, hard negative, contrastive training, MS MARCO, listwise ranking.
+*(See [GLOSSARY](../../GLOSSARY.md).)*
 
 ---
 
@@ -152,6 +232,9 @@ MS MARCO, listwise ranking. *(See [GLOSSARY](../../GLOSSARY.md).)*
 4. You retrieve top-10 and re-rank, but quality is still poor. Name two different fixes and when
    each applies.
 5. Where in a two-stage pipeline would you add a "prefer recent documents" rule, and why there?
+6. For the query *"What is the capital of Canada?"*, why does the false sentence *"The capital of
+   Canada is Sydney"* still land near the query in embedding space?
+7. Why are **hard** negatives more valuable than random ones when training a re-ranker?
 
 ---
 
@@ -194,6 +277,20 @@ In the **re-ranking** stage — it's the natural place to blend extra signals (r
 
 </details>
 
+<details>
+<summary><b>Show answer — 6</b></summary>
+
+Because embeddings encode **meaning, not truth**. That sentence uses the same vocabulary and the same grammatical shape as the correct answer ("the capital of X is Y"), so the model — trained to place similar-meaning texts together — places it right next to the query. Nothing in a vector records whether a statement is factually right, so cosine similarity cannot possibly filter it out. Only a model that judges *answer quality* (a re-ranker) or a downstream fact-check can.
+
+</details>
+
+<details>
+<summary><b>Show answer — 7</b></summary>
+
+Random negatives are too easy — distinguishing "capital of Canada" from an unrelated passage about espresso teaches the model almost nothing. **Hard negatives** are the near-misses the re-ranker will actually face in production (topically close, plausibly worded, but wrong), so training on them is what teaches the fine distinction between "similar" and "answers the query." They're typically mined by running a first-stage retriever and taking its top-ranked *wrong* results.
+
+</details>
+
 <!-- cyu-answers:end -->
 
 ## References
@@ -201,4 +298,6 @@ In the **re-ranking** stage — it's the natural place to blend extra signals (r
 - Nogueira & Cho, *Passage Re-ranking with BERT* (2019) — the cross-encoder re-ranking idea.
 - Reimers & Gurevych, *Sentence-BERT* (2019) — bi- vs. cross-encoder trade-offs.
 - `sentence-transformers` CrossEncoder documentation and MS MARCO models.
+- Nogueira et al., *Multi-Stage Document Ranking with BERT* (2019) — candidate depth and staging.
+- Xiong et al., *ANCE* (2020) — mining hard negatives from a first-stage retriever.
 - DeepLearning.AI × Cohere, *Large Language Models with Semantic Search*, Lesson 4 (inspiration).

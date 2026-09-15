@@ -128,6 +128,15 @@ distances. *(Ch 6)*
 **Cross-encoder** — a model that reads query and document *together* for an accurate relevance
 score; slow but precise. *(Ch 7)*
 
+**Relevance score** — the number a re-ranker assigns to a (query, document) pair: how well this
+document answers *this* query. Distinct from similarity, which only measures how alike two texts
+are. Valid for ranking within one query, not for comparing across queries. *(Ch 7)*
+
+**Hard negative** — a training example that is *wrong but tempting*: topically close to the query
+and plausibly worded, yet not an answer (e.g. "the capital of Ontario is Toronto" for "what is
+the capital of Canada?"). Training on hard negatives — rather than random, easy ones — is what
+teaches a re-ranker the difference between *similar* and *relevant*. *(Ch 7, 12)*
+
 **Two-stage retrieval** — retrieve many candidates cheaply, then re-rank a few expensively. *(Ch 7)*
 
 **Hybrid search** — combining lexical (BM25) and semantic (dense) retrieval. *(Ch 8)*

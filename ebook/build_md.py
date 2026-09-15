@@ -24,6 +24,19 @@ def sanitize(s):
     s=re.sub(r"[\U0001F000-\U0001FAFF\U00002190-\U000021FF\U00002600-\U000027BF\uFE0F]","",s)
     return s
 
+def strip_emphasis(s):
+    """Remove markdown emphasis markers from a string.
+
+    The answers appendix wraps each question in **bold**. If the question itself
+    contains *emphasis* or **bold**, the nested markers break pandoc's parser and
+    the asterisks render literally. Questions are already bold, so inner emphasis
+    is redundant -- drop it.
+    """
+    s = re.sub(r"\*\*(.+?)\*\*", r"\1", s)   # bold
+    s = re.sub(r"(?<!\w)\*(.+?)\*(?!\w)", r"\1", s)  # italics
+    return s
+
+
 def fix_images(md):
     """Make chapter image paths work from ebook/ and fit the printed page.
 
@@ -67,7 +80,15 @@ def extract_questions(md):
     tail=md[m.end():]
     stop=re.search(r"(^## |<!-- cyu-answers)", tail, flags=re.MULTILINE)
     block=tail[:stop.start()] if stop else tail
-    qs=re.findall(r"^\s*\d+\.\s+(.*\S)\s*$", block, flags=re.MULTILINE)
+    # Questions may wrap across several lines; join the continuations, otherwise a
+    # question is truncated mid-sentence (and any emphasis markers end unbalanced).
+    qs=[]
+    for ln in block.split("\n"):
+        m=re.match(r"^\s*\d+\.\s+(.*\S)\s*$", ln)
+        if m:
+            qs.append(m.group(1))
+        elif qs and ln.strip() and not ln.lstrip().startswith(("#","-","*",">","|","`")):
+            qs[-1] += " " + ln.strip()
     return qs
 
 chapters = [
@@ -125,7 +146,7 @@ for c in chapters:
     for i in range(max(len(qs),len(ans))):
         q=qs[i] if i<len(qs) else ""
         a=ans[i] if i<len(ans) else ""
-        if q: answers_sections.append(f"**Q{i+1}. {sanitize(q)}**")
+        if q: answers_sections.append(f"**Q{i+1}. {strip_emphasis(sanitize(q))}**")
         answers_sections.append("")
         if a: answers_sections.append(sanitize(a))
         answers_sections.append("")

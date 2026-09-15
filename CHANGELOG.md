@@ -13,6 +13,12 @@ All notable changes to this project are documented here. The format is based on
 - **UMAP section in the Chapter 4 notebook** — a `project()` helper offering both UMAP and PCA
   (UMAP optional; falls back to PCA automatically), 2-D and 3-D plots, a side-by-side
   comparison, and guidance on which projection to trust for which claim.
+- **Chapter 7 depth on why re-ranking exists** — a new *"Similar is not the same as relevant"*
+  section (similarity vs. answerhood vs. truth, with a distractor table showing how a *false*
+  sentence can outrank the correct one), a *How a re-ranker learns relevance* section on
+  positive pairs and hard-negative mining, and a notebook demo re-ranking a wide BM25 candidate
+  list to rescue a weak keyword first stage. Two new questions, answers, and glossary entries
+  (*relevance score*, *hard negative*).
 - **`assets/make_embedding_maps.py`** — reproducible generator for all four figures.
 - **Slide decks for all 14 chapters** in `slides/`, linked from each chapter README and from
   the learning-path table.
@@ -21,7 +27,10 @@ All notable changes to this project are documented here. The format is based on
 ### Changed
 - `ebook/build_md.py` now rewrites chapter figure paths and pins figure widths, so images from
   the chapter READMEs render correctly in the e-book.
-- E-book rebuilt with the new Chapter 4 figures (69 -> 76 pages).
+- `ebook/build_md.py` now joins multi-line *Check your understanding* questions (previously a
+  wrapped question was truncated mid-sentence in the Answers appendix) and strips nested
+  emphasis markers that rendered as literal asterisks.
+- E-book rebuilt with the new Chapter 4 and 7 material (69 -> 78 pages).
 
 ### Dependencies
 - Added `umap-learn` (optional — the notebook falls back to PCA when it is absent).
