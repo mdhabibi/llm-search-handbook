@@ -108,6 +108,67 @@ Sit with this: matching *meaning* just turned a pile of sentences into a working
 answering lookup. **Searching for the nearest embedding to a query = searching by meaning.**
 That's dense retrieval, and Chapter 5 scales it to a real corpus.
 
+### Seeing it
+
+Here are ten of our own question/answer pairs, embedded and flattened onto a page. Each dashed
+line joins a question to *its* answer:
+
+![Questions land beside their own answers](../../assets/embeddings-qa-map.png)
+
+Every question sits a short hop from its own answer — even though "Why does the sky look blue?"
+and "The sky appears blue due to Rayleigh scattering" share almost no words. That short hop
+*is* the retrieval step.
+
+> This particular map uses **PCA**, not UMAP, on purpose: the claim here is about *distance*
+> ("the answer is the nearest point"), and PCA preserves distances. More on that below.
+
+---
+
+## What the space looks like from above
+
+One pile of sentences is convincing. A whole vocabulary is where it becomes obvious. Below are
+~150 everyday terms across eight themes — fruit, vehicles, buildings, sports, music, weather,
+programming, cooking — embedded and projected down to two dimensions:
+
+![A semantic atlas of everyday terms](../../assets/embeddings-atlas-2d.png)
+
+**Nobody told the model these eight categories exist.** It never saw a label. The grouping comes
+entirely from how these words get used in language — and that is the whole idea in one picture:
+**meaning becomes location.**
+
+Now look at the hollow points — terms we added deliberately because they belong to two themes at
+once. *"racing car"* lands out on the frontier between Vehicles and Sports. *"apple pie"* sits on
+the edge of Fruit, pulled toward Cooking. *"football stadium"* joins Buildings rather than Sports —
+the model decided the noun mattered more than the modifier, which is a judgement you can argue
+with, and that's exactly the point: these positions are *learned*, not defined.
+
+The space has no walls. Things that are partly two things land partly in both places, and a term
+can sit anywhere on the continuum. Keyword search has no equivalent move — a word is either
+present or absent, and "apple pie" is simply two tokens with no location at all.
+
+Two dimensions is a brutal squeeze of 384. A third axis unfolds clusters that 2-D forces on top
+of one another:
+
+![The same atlas in three dimensions](../../assets/embeddings-atlas-3d.png)
+
+And remember: even this is a shadow. The real space has **384 axes**, none of which means
+anything on its own — there is no "fruitiness" dimension. Meaning is smeared across all of them.
+
+### Honesty about the pictures
+
+The maps above use **UMAP**, which preserves each point's *neighbourhood*. Its cousin **PCA** is
+a straight linear shadow. Same vectors, both methods:
+
+![UMAP and PCA compared on the same vectors](../../assets/embeddings-umap-vs-pca.png)
+
+UMAP gives you cleaner islands; PCA gives you a more faithful global layout. The trap is reading
+**the gaps between UMAP clusters as meaning**. UMAP stretches and squashes global distances
+freely, so two far-apart clusters may be no more unrelated than two touching ones.
+
+> **Projections are for looking, not for deciding.** Search always runs on the full
+> 384-dimensional vectors. Nothing in a retrieval pipeline should ever be computed from a 2-D
+> picture — the picture exists to build your intuition, then you throw it away.
+
 ---
 
 ## Properties worth knowing
@@ -137,10 +198,19 @@ You will:
    query, and confirm the *migraine* passage that keyword search missed (Chapter 2) is now the
    top hit.
 5. **Cluster** the corpus by meaning and **project to 2-D** (PCA) to see topics group together.
+6. Build the **semantic atlas** above from our own eight-theme vocabulary, and plot it in **2-D
+   and 3-D with UMAP** — then compare UMAP against PCA on identical vectors to understand what
+   each projection preserves and what it distorts.
+
+Then make it yours: add a theme of your own, drop in ambiguous terms and watch where they land
+between clusters, and tune UMAP's `n_neighbors` to see the map change shape.
 
 > Note: this notebook downloads a small model on first run, so it needs internet the first time
 > (it then works offline). The pure-analysis helpers (cosine matrix, nearest neighbors,
 > clustering, PCA) are written so they're easy to test even without the model.
+>
+> **UMAP is optional.** `pip install umap-learn` for the full effect; without it the notebook
+> automatically falls back to PCA and still runs end to end.
 
 ---
 

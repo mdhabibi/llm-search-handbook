@@ -15,6 +15,7 @@ nltk
 # Embeddings & semantic search (Ch 4, 5, 7)
 sentence-transformers
 torch
+umap-learn   # optional: 2-D/3-D embedding maps in Ch 4 (falls back to PCA if absent)
 
 # Vector databases & ANN (Ch 6)
 faiss-cpu
