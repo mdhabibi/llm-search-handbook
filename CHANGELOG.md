@@ -19,6 +19,12 @@ All notable changes to this project are documented here. The format is based on
   positive pairs and hard-negative mining, and a notebook demo re-ranking a wide BM25 candidate
   list to rescue a weak keyword first stage. Two new questions, answers, and glossary entries
   (*relevance score*, *hard negative*).
+- **Chapter 10 on the generation half's real behaviour** — a *Generation is not deterministic*
+  section (sampling, temperature, judging a prompt over several runs rather than one), an
+  explanation of `max_new_tokens` and mid-sentence truncation, and a *What people actually build
+  with this* table mapping the RAG pattern to shipped products. Two notebook sections, two new
+  questions and answers, and four glossary entries (*temperature*, *sampling / greedy decoding*,
+  *max tokens*, expanded *context window*).
 - **`assets/make_embedding_maps.py`** — reproducible generator for all four figures.
 - **Slide decks for all 14 chapters** in `slides/`, linked from each chapter README and from
   the learning-path table.
@@ -30,7 +36,7 @@ All notable changes to this project are documented here. The format is based on
 - `ebook/build_md.py` now joins multi-line *Check your understanding* questions (previously a
   wrapped question was truncated mid-sentence in the Answers appendix) and strips nested
   emphasis markers that rendered as literal asterisks.
-- E-book rebuilt with the new Chapter 4 and 7 material (69 -> 78 pages).
+- E-book rebuilt with the new Chapter 4, 7 and 10 material (69 -> 79 pages).
 
 ### Dependencies
 - Added `umap-learn` (optional — the notebook falls back to PCA when it is absent).

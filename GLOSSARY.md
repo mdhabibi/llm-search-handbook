@@ -174,7 +174,19 @@ answer using it, for grounded answers. *(Ch 10)*
 
 **Grounding** — tying an answer to retrieved source text so it's verifiable. *(Ch 10)*
 
-**Context window** — the amount of text an LLM can consider at once. *(Ch 10)*
+**Context window** — the amount of text an LLM can consider at once. Prompt *and* answer share
+it, so packing in more passages leaves less room to answer. *(Ch 10)*
+
+**Temperature** — how adventurously an LLM samples its next token. Near 0 it almost always takes
+the most likely token (near-deterministic, repetitive); higher values give more varied and more
+creative — and more error-prone — output. Keep it low for factual RAG. *(Ch 10)*
+
+**Sampling / greedy decoding** — generation draws each next token from a probability distribution
+(*sampling*), which is why the same prompt can give different answers on different runs. Always
+taking the single most likely token instead is *greedy decoding*, which is reproducible. *(Ch 10)*
+
+**Max tokens (truncation)** — a hard cap on how many tokens a model may generate. Reaching it
+stops the output mid-sentence with no error — a common cause of "broken" RAG answers. *(Ch 10)*
 
 **Chunking** — splitting documents into smaller pieces suitable for embedding and retrieval. *(Ch 11)*
 

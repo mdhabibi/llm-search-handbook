@@ -55,6 +55,32 @@ retrieval → better answers.**
 
 ---
 
+## What people actually build with this
+
+This one-two step — search, then generate — is the engine behind a whole category of products
+you've probably used. They differ only in what sits in the index:
+
+| The product | The corpus behind it |
+|---|---|
+| "Chat with this PDF" | one document, chunked |
+| Ask-an-author bots | a writer's collected essays or books |
+| Podcast Q&A ("ask the show anything") | episode transcripts |
+| Video Q&A / "jump to the moment" | subtitle tracks, timestamped |
+| Company knowledge assistants | internal wikis, tickets, runbooks |
+| Documentation search that answers | API docs and guides |
+| Customer-support deflection | help centre articles + past tickets |
+
+None of these needs a custom-trained model. They need **a good index and a careful prompt** —
+which is to say, they need the nine chapters you've already done plus this one. When someone
+says "we fine-tuned a model on our docs," the honest question is usually whether RAG would have
+been cheaper, faster to update, and easier to cite.
+
+The pattern also degrades gracefully: add re-ranking (Chapter 7) when the right passage is
+retrieved but ranked badly, and hybrid search (Chapter 8) when users search by exact product
+codes as well as by meaning.
+
+---
+
 ## Anatomy of a good RAG prompt
 
 The prompt is where grounding is enforced. A solid template:
@@ -96,6 +122,61 @@ llm = pipeline("text2text-generation", model="google/flan-t5-base")
 answer = llm(prompt, max_new_tokens=128)[0]["generated_text"]
 ```
 
+### That `max_new_tokens` is not decoration
+
+It's a hard cap on how many tokens the model may produce, and when the answer reaches it the
+model **stops mid-sentence**:
+
+```
+Yes, side projects are a good idea. They help you develop skills and can be
+a good way to network with others. However, make sure you don't create a
+conflict with your employer and that you're not violating any
+                                                              ^ cut off here
+```
+
+Nothing is broken and there is no error — you asked for at most *N* tokens and got exactly that.
+Raise the cap for longer answers, or instruct the model to be brief. This is one of the most
+common "why is my RAG output weird?" moments, and it costs people hours because it looks like a
+model failure rather than a setting.
+
+Watch both ends of the budget: the **prompt** (question + passages) and the **answer** share the
+model's context window. Stuff in too many passages and you squeeze the room left to answer in.
+
+---
+
+## Generation is not deterministic
+
+Everything before this chapter was **reproducible**. Run the same BM25 query, the same dense
+retrieval, the same re-ranker twice and you get identical results — the scores are fixed
+arithmetic over fixed vectors. You could rely on that.
+
+The generator breaks it. Ask the same question, with the same retrieved passages, in the same
+prompt, twice, and you can get two different answers:
+
+```
+run 1 → "Yes — Andrew recommends side projects to build skills and network."
+run 2 → "Side projects are valuable, though avoid conflicts with your employer."
+```
+
+Both are grounded and correct. They are simply different, because most LLMs **sample** their
+next token from a probability distribution rather than always taking the most likely one.
+**Temperature** controls how adventurous that sampling is: near `0` the model almost always picks
+the top token (nearly deterministic, repetitive); higher values flatten the distribution and give
+more varied, more creative — and more wrongness-prone — output.
+
+Three consequences worth internalising:
+
+- **For factual RAG, keep temperature low.** You want the model to report the passages
+  faithfully, not to improvise around them.
+- **Judge a prompt on several runs, not one.** A prompt that worked once may have been lucky.
+  Generate the same prompt 3–5 times and read the spread — that's the fastest way to see whether
+  an instruction reliably lands. (The notebook does exactly this.)
+- **Evaluate over multiple runs too.** A single-run score for a RAG answer partly measures luck.
+  This is precisely why Chapter 9's retrieval metrics are the dependable half of RAG evaluation:
+  retrieval is deterministic and cheap to measure; generation is neither.
+
+> **Retrieval is arithmetic; generation is a roll of weighted dice.** Test them differently.
+
 ---
 
 ## Hands-on
@@ -110,6 +191,10 @@ You will:
 4. Demonstrate **grounding**: ask something the corpus *can't* answer and watch the model refuse
    instead of hallucinating.
 5. Wrap it all in a single `rag_answer(question)` function — the capstone of the course so far.
+6. **Watch an answer truncate**: shrink `max_new_tokens` and see the output stop mid-sentence,
+   then restore it.
+7. **Sample one prompt several times** at different temperatures and compare the spread — the
+   fastest way to tell a reliable prompt from a lucky one.
 
 > The retrieval + prompt-assembly logic runs and is tested without any model. The generation step
 > downloads a small model on first run (internet once), or you can plug in an API.
@@ -197,6 +282,7 @@ retrieval-augmented generation.
 
 Large Language Model (LLM), hallucination, Retrieval-Augmented Generation (RAG), grounding,
 context window, prompt template, refusal, citation, faithfulness, answer relevance,
+temperature, sampling, greedy decoding, max tokens / truncation,
 retrieval vs. generation evaluation, LLM-as-a-judge. *(See
 [GLOSSARY](../../GLOSSARY.md).)*
 
@@ -210,6 +296,8 @@ retrieval vs. generation evaluation, LLM-as-a-judge. *(See
 4. Why are most RAG failures actually *retrieval* failures?
 5. When would you choose RAG over fine-tuning to give a model new knowledge?
 6. A RAG answer comes back wrong. What single check tells you whether to fix the *retriever* or the *prompt/model*, and why?
+7. Your RAG answer stops mid-sentence. What is the most likely cause, and where else does the same budget bite?
+8. You run the same question twice and get two different answers. Explain why, and say what you would change for a factual assistant.
 
 ---
 
@@ -256,6 +344,20 @@ When knowledge changes often, must be **citable/verifiable**, or is private/larg
 <summary><b>Show answer — 6</b></summary>
 
 Check **what was retrieved** (and compute retrieval recall for that question). If the evidence never made it into the context, it's a **retrieval** failure — fix the retriever (Ch 6–8). If the right passage *was* there but the answer missed or misread it, it's a **generation** failure — fix the prompt, model, or context budget. Evaluating retrieval and generation separately localizes the fix instead of guessing.
+
+</details>
+
+<details>
+<summary><b>Show answer — 7</b></summary>
+
+You hit the **token cap** (`max_new_tokens` / `max_tokens`): the model was allowed only N tokens and stopped exactly there — no error, just a truncated sentence. Raise the cap, or instruct the model to answer briefly. The same budget bites at the other end too: the prompt (question + retrieved passages) and the answer share the model's **context window**, so packing in more passages leaves less room to answer in.
+
+</details>
+
+<details>
+<summary><b>Show answer — 8</b></summary>
+
+Because generation is **sampled**, not computed: the model draws each next token from a probability distribution instead of always taking the most likely one, so wording varies between runs. For a factual assistant, lower the **temperature** (near 0, or use greedy decoding) so output is near-deterministic and hews to the retrieved passages — and evaluate prompts over several runs rather than one, since a single good answer may just be luck.
 
 </details>
 
