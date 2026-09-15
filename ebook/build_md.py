@@ -24,6 +24,21 @@ def sanitize(s):
     s=re.sub(r"[\U0001F000-\U0001FAFF\U00002190-\U000021FF\U00002600-\U000027BF\uFE0F]","",s)
     return s
 
+def fix_images(md):
+    """Make chapter image paths work from ebook/ and fit the printed page.
+
+    Chapter READMEs link figures as `../../assets/x.png` (correct from
+    chapters/<name>/). pandoc runs from ebook/, one level below the repo root,
+    so the same file is `../assets/x.png` from there. We also pin a width, or
+    wide figures overflow the A4 text block.
+    """
+    def repl(m):
+        alt, path = m.group(1), m.group(2)
+        path = re.sub(r"^(\.\./)+assets/", "../assets/", path.strip())
+        return f"![{alt}]({path}){{width=100%}}"
+    return re.sub(r"!\[([^\]]*)\]\(([^)]+)\)", repl, md)
+
+
 def strip_answer_blocks(md):
     return re.sub(r"<!-- cyu-answers:start -->.*?<!-- cyu-answers:end -->\n?", "", md, flags=re.DOTALL)
 
@@ -114,8 +129,9 @@ for c in chapters:
         answers_sections.append("")
         if a: answers_sections.append(sanitize(a))
         answers_sections.append("")
-    # chapter body for the PDF: strip the collapsible answers, then sanitize
-    parts.append(sanitize(strip_answer_blocks(raw)))
+    # chapter body for the PDF: strip the collapsible answers, fix figure paths,
+    # then sanitize
+    parts.append(fix_images(sanitize(strip_answer_blocks(raw))))
 
 parts.append("\n".join(answers_sections))
 parts.append(sanitize(load("GLOSSARY.md")))
